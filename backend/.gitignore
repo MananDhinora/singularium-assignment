@@ -1,0 +1,62 @@
+# --------------------------------
+# Python / Django
+# --------------------------------
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.class
+
+# Virtual environments
+env/
+venv/
+ENV/
+.env
+*.env
+*.venv
+
+# Django files
+db.sqlite3
+media/
+static/
+staticfiles/
+*.log
+
+# Django secret key file if separated
+secret_key.txt
+
+# Pip files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Pytest / Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+htmlcov/
+
+# Installer logs
+pip-log.txt
+
+# Local settings overrides
+local_settings.py
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# IDE / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Mac / OS generated
+.DS_Store
+Thumbs.db
+
