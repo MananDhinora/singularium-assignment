@@ -11,5 +11,9 @@ class Task(models.Model):
         "self", symmetrical=False, related_name="dependents"
     )
 
-    def __str__(self):
-        return self.title
+
+class UserWeights(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    weight_importance = models.FloatField(default=1.0)
+    weight_estimated_hours = models.FloatField(default=1.0)
+    weight_due_date = models.FloatField(default=1.0)
