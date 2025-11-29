@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -6,10 +7,11 @@ class Task(models.Model):
     due_date = models.DateField()
     estimated_hours = models.PositiveIntegerField()
     importance = models.PositiveIntegerField()
-
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     dependencies = models.ManyToManyField(
         "self", symmetrical=False, related_name="dependents"
     )
+    priority = models.FloatField(default=0)
 
 
 class UserWeights(models.Model):

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Task Analyzer — SPA</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- LOGIN OVERLAY -->
+  <div id="loginOverlay" class="overlay" aria-hidden="true">
+    <div class="login-box" role="dialog" aria-labelledby="loginTitle">
+      <h2 id="loginTitle">Welcome to Task Analyzer</h2>
+      <p>Enter a username to continue</p>
+
+      <input id="loginUsername" type="text" placeholder="Username" autocomplete="off" />
+      <div class="row">
+        <button id="loginBtn">Login</button>
+        <button id="guestBtn" class="secondary">Continue as Guest</button>
+      </div>
+
+      <p id="loginError" class="error"></p>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div class="app">
+    <header>
+      <h1>Task Analyzer</h1>
+      <div class="header-right">
+        <span id="currentUser" class="muted"></span>
+        <button id="logoutBtn" class="secondary">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- INPUT -->
+      <section class="panel input-panel">
+        <h2>Input Tasks</h2>
+
+        <div class="card">
+          <h3>Add Single Task</h3>
+          <input id="title" type="text" placeholder="Title" />
+          <input id="dueDate" type="date" />
+          <input id="estimatedHours" type="number" min="0" placeholder="Estimated Hours" />
+          <input id="importance" type="number" min="1" max="10" placeholder="Importance (1-10)" />
+          <div class="row">
+            <button id="addTaskBtn">Add Task</button>
+            <button id="createRemoteTaskBtn" class="secondary">Save to Server</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Bulk JSON Input</h3>
+          <textarea id="jsonInput" placeholder='Paste JSON array: [{"title":"T1","due_date":"2025-11-30","estimated_hours":3,"importance":8}]'></textarea>
+          <div class="row">
+            <button id="importJsonBtn">Import JSON</button>
+            <button id="clearLocalBtn" class="secondary">Clear Local Tasks</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <button id="analyzeBtn" class="primary wide">Analyze Tasks (score)</button>
+          <p class="muted small">Analyze will send tasks to scoring endpoint and return prioritized list.</p>
+          <p id="error" class="error"></p>
+        </div>
+      </section>
+
+      <!-- OUTPUT -->
+      <section class="panel output-panel">
+        <div class="output-header">
+          <h2>Results</h2>
+          <div class="controls">
+            <label for="sortStrategy" class="muted">Sort:</label>
+            <select id="sortStrategy">
+              <option value="smart">Smart Balance</option>
+              <option value="fast">Fastest Wins</option>
+              <option value="impact">High Impact</option>
+              <option value="deadline">Deadline Driven</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="results" class="results"></div>
+      </section>
+    </main>
+
+    <footer>
+      <small class="muted">Simple SPA • Frontend only (HTML/CSS/JS)</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+:root {
+  --bg: #eef2f7;
+  --card: #ffffff;
+  --accent: #0d74ff;
+  --muted: #6b7280;
+  --danger: #ff3b3b;
+  --ok: #16a34a;
+  --gap: 14px;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app { max-width: 1100px; margin: 20px auto; padding: 0 16px; }
+
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: var(--accent);
+  color: white;
+  padding: 18px;
+  border-radius: 8px;
+}
+header h1 { margin:0; font-size:1.2rem; }
+.header-right { display:flex; gap:10px; align-items:center; }
+
+.content {
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.panel { background: var(--card); border-radius: 8px; padding: 16px; flex: 1 1 45%; min-width: 300px; }
+
+.card { background:#fbfdff; padding:12px; border-radius:8px; margin-bottom:12px; }
+input, textarea, select {
+  width:100%;
+  padding:10px;
+  border-radius:6px;
+  border:1px solid #d1d5db;
+  margin-top:8px;
+}
+textarea { min-height:120px; resize:vertical; }
+.row { display:flex; gap:8px; margin-top:10px; }
+button { padding:10px 12px; border-radius:6px; border: none; cursor:pointer; }
+.primary { background: var(--accent); color:white; }
+.secondary { background: #f3f4f6; color:#111827; }
+.wide { width:100%; }
+
+.muted { color: var(--muted); }
+.small { font-size:0.9rem; }
+
+.results { margin-top: 8px; }
+.task {
+  border-left: 6px solid #ddd;
+  background: #fff;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+.task .title { font-weight:600; margin-bottom:6px; }
+.task .meta { color: var(--muted); font-size:0.9rem; }
+.task .reason { margin-top:8px; color:#374151; font-size:0.9rem; }
+
+/* priority colors */
+.high { border-left-color: #ff3b3b; }
+.medium { border-left-color: #ff9f1c; }
+.low { border-left-color: #22c55e; }
+
+/* Login overlay */
+.overlay {
+  position: fixed; inset:0; display:none; align-items:center; justify-content:center;
+  background: rgba(0,0,0,0.55); z-index:999;
+}
+.login-box { background:white; padding:20px; border-radius:8px; width:320px; box-shadow:0 8px 24px rgba(2,6,23,0.2); }
+.error { color: var(--danger); margin-top:8px; }
+
+/* footer */
+footer { margin-top:18px; text-align:center; color:var(--muted); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .panel { flex-basis: 100%; }
+  header { text-align:center; flex-direction:column; gap:8px; }
+}
