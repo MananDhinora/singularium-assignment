@@ -18,6 +18,7 @@ class TaskSerializer(serializers.ModelSerializer):
             "due_date",
             "estimated_hours",
             "importance",
+            "user_id",
             "dependencies",
             "priority",
         ]

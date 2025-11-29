@@ -7,7 +7,7 @@ class Task(models.Model):
     due_date = models.DateField()
     estimated_hours = models.PositiveIntegerField()
     importance = models.PositiveIntegerField()
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     dependencies = models.ManyToManyField(
         "self", symmetrical=False, related_name="dependents"
     )

@@ -36,17 +36,17 @@ def create_task(request):
 
     try:
         user = User.objects.get(id=user_id)
-        print("$$$$$$$$$$$$$$", user)
     except User.DoesNotExist:
         return Response({"error": "Invalid user_id"}, status=404)
 
-    task_data = {**request.data, "user": user.id}
+    task_data = {**request.data}
 
     # -----------------------------
     # Calculate priority using score_task
     # -----------------------------
     priority_score = score_task(task_data, user_id)
     task_data["priority"] = priority_score
+    print("@@@@", task_data)
 
     serializer = TaskSerializer(data=task_data)
     if serializer.is_valid():
