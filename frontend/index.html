@@ -45,6 +45,9 @@
           <input id="dueDate" type="date" />
           <input id="estimatedHours" type="number" min="0" placeholder="Estimated Hours" />
           <input id="importance" type="number" min="1" max="10" placeholder="Importance (1-10)" />
+          <select id="dependencies" multiple class="multi-select">
+          </select>
+          <p class="muted small">Hold CTRL / CMD to select multiple dependencies.</p>
           <div class="row">
             <button id="addTaskBtn">Add Task</button>
             <button id="createRemoteTaskBtn" class="secondary">Save to Server</button>

@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import Task, UserWeights
@@ -14,18 +13,11 @@ def get_task(request):
     if not user_id:
         return Response({"error": "user_id is required"}, status=400)
     tasks = Task.objects.filter(user_id=user_id)
-    serializer = TaskSerializer(tasks, many=True)
-    return Response(serializer.data)
-
-
-@api_view(["GET"])
-@permission_classes([IsAuthenticated])
-def score_single_task(request, pk): ...
-
-
-@api_view(["GET"])
-@permission_classes([IsAuthenticated])
-def score_all_task(request): ...
+    serializer = TaskSerializer(tasks, many=True).data
+    # recalculate the priority everytime before returning the tasks
+    for task in serializer:
+        task["priority"] = score_task(task, user_id)
+    return Response(serializer)
 
 
 @api_view(["POST"])
